@@ -1,6 +1,6 @@
-let john = { name: "John", surname: "Smith", id: 1 };
-let pete = { name: "Pete", surname: "Hunt", id: 2 };
-let mary = { name: "Mary", surname: "Key", id: 3 };
+let john = { name: "John", surname: "Smith", id: 1, age: 25 };
+let pete = { name: "Pete", surname: "Hunt", id: 2, age: 30 };
+let mary = { name: "Mary", surname: "Key", id: 3, age: 28 };
 
 
 let users = [john, pete, mary];
@@ -12,3 +12,12 @@ let usersMapped = users.map(person => ({
     id: person.id
 }));
 
+let arr = [pete, john, mary];
+
+function sortByAge (personArray) {
+    return personArray.sort((a, b) => a.age - b.age);
+}
+
+function getAverageAge (personArray) {
+    return personArray.reduce((sum, current) => sum + current.age, 0) / personArray.length;
+}
