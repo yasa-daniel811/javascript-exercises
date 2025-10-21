@@ -21,3 +21,10 @@ function sortByAge (personArray) {
 function getAverageAge (personArray) {
     return personArray.reduce((sum, current) => sum + current.age, 0) / personArray.length;
 }
+
+function groupById (personArray) {
+    return personArray.reduce((usersById, user) => { 
+        usersById[user.id] = user
+        return usersById;
+    }, {})
+}
