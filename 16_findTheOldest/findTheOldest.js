@@ -1,8 +1,12 @@
+function getAge(person) {
+    person.yearOfDeath ??= new Date().getFullYear;
+    return person.yearOfDeath - person.yearOfBirth;
+}
+
 const findTheOldest = function(people) {
     const maxName = people.reduce((oldestPerson, currentPerson) => {
-        return (currentPerson.yearOfDeath - currentPerson.yearOfBirth) > (people[oldestPerson].yearOfDeath - people[oldestPerson].yearOfBirth) ? person : oldestPerson;
+        return (getAge(currentPerson) > getAge(oldestPerson)) ? currentPerson : oldestPerson;
     })
-     
 };
 
 // Do not edit below this line
