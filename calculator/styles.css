@@ -20,6 +20,8 @@
 }
 
 #number-buttons {
+    justify-content: center;
+    align-items: center;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -29,6 +31,7 @@
 
 #function-buttons {
     justify-content: center;
+    align-items: center;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -36,15 +39,11 @@
     width: 150px;
 }
 
-.button {
+button {
     text-align: center;
     vertical-align: middle;
     height: 50px;
     line-height: 50px;
     width: 50px;
     background-color: coral;
-    border: 1px solid #eee;
-    box-shadow: 2px 4px 16px rgba(0,0,0,.06);
-    border-radius: 4px;
-    user-select: none;
 }

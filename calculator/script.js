@@ -1,3 +1,6 @@
-const input = document.getElementById("calculatorhead");
+const input = document.getElementById("calculator-head");
+const numberButtons = document.getElementById("number-buttons").querySelectorAll("button");
 
-console.log(input.textContent);
+numberButtons.forEach(button => button.addEventListener("click", (event) => {
+    input.value = button.id;
+}))
