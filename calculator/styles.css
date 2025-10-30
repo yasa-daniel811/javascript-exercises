@@ -9,6 +9,7 @@
 #calculator-head {
     height: 100px;
     font-size: xx-large;
+    text-align: right;
 }
 
 #button-area {
