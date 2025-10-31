@@ -2,6 +2,7 @@ const input = document.getElementById("calculator-head");
 const numberButtons = document.getElementById("number-buttons").querySelectorAll("button");
 const operatorButtons = document.getElementById("function-buttons").querySelectorAll(".operator");
 const cancelButton = document.getElementById("c");
+const equalButton = document.getElementById("=");
 
 let numberList = [];
 let number = "";
@@ -42,26 +43,41 @@ numberButtons.forEach(button => button.addEventListener("click", (event) => {
 
 
 operatorButtons.forEach(button => button.addEventListener("click", (event) => {
+    //if there are the same number of operators as numbers, do nothing (avoid stacking operators)
+    if (numberList.length === (operatorList.length + 1)) return;
+
+    //add the current number and the operator to their arrays for calculating later
     operatorList.push(button.id);
     numberList.push(number);
-    // reset the 'screen' and internal number
-    number = "";
-    input.value = number;
 
-    console.log("numberList: ");
-    numberList.forEach(number => {
-      console.log(number);
-    });
-    console.log("operatorList: ");
-    operatorList.forEach(operator => {
-      console.log(operator);
-    });
+    //reset the 'screen' and internal number
+    number = "";
+    input.value = "";
+
+    updateFormulaBar();
 }));
 
-cancelButton.addEventListener("click", (event) => {
+cancelButton.addEventListener("click", event => {
     input.value = "";
     number = "";
     numberList = [];
     operator = "";
     operatorList = [];
+    updateFormulaBar();
 });
+
+equalButton.addEventListener("click", event => {
+  
+
+})
+
+function updateFormulaBar() {
+  const formulaBar = document.getElementById("formula-bar");
+  let formula = "";
+  for (let i = 0; i < numberList.length; i++) {
+    console.log(numberList[i]);
+    formula = formula.concat(numberList[i]);
+    formula = formula.concat(operatorList[i]);
+  }
+  formulaBar.textContent = formula;
+}
