@@ -6,6 +6,13 @@
     background-color: rgb(252, 214, 200);
 }
 
+#formula-bar {
+    text-align: right;
+    color: grey;
+    background-color: white;
+    height: 30px;
+}
+
 #calculator-head {
     height: 100px;
     font-size: xx-large;
