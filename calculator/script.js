@@ -8,27 +8,27 @@ let numberList = [];
 let number = "";
 let operatorList = [];
 
-const add = function(a, b) {
+function add(a, b) {
 	return a + b;
 };
 
-const subtract = function(a, b) {
+function subract(a, b) {
 	return a - b
 };
 
-const sum = function(intArray) {
+ function sum(intArray) {
 	return intArray.reduce((sum, int) => sum + int, 0);
 };
 
-const multiply = function(intArray) {
+function multiply(intArray) {
   return intArray.reduce((product, int) => product * int);
 };
 
-const power = function(a, b) {
+function power(a, b) {
 	return Math.pow(a, b);
 };
 
-const factorial = function(a) {
+function factorial(a) {
 	if (a === 0 || a === 1) {
     return 1;
   }
