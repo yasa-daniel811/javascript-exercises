@@ -24,6 +24,10 @@ function multiply(intArray) {
   return intArray.reduce((product, int) => product * int);
 };
 
+function divide(intArray) {
+  return intArray.reduce((factor, int) => factor / int);
+}
+
 function power(a, b) {
 	return Math.pow(a, b);
 };
@@ -54,6 +58,8 @@ operatorButtons.forEach(button => button.addEventListener("click", (event) => {
     number = "";
     input.value = "";
 
+    console.log(numberList);
+    console.log(operatorList);
     updateFormulaBar();
 }));
 
@@ -67,8 +73,24 @@ cancelButton.addEventListener("click", event => {
 });
 
 equalButton.addEventListener("click", event => {
-  
+  if (operatorList.length > 0) {
+    updateFormulaBar();
+    numberList.push(number);
+    operatorPrecedenceList = ["/", "*", "+", "-"]
+    operatorPrecedenceList.forEach(operator => {
+      while (operatorList.find(element => element === operator)) {
+        operatorIndex = operatorList.indexOf(operator);
+        result = calculate(numberList[operatorIndex], numberList[operatorIndex + 1], operator);
+        numberList.splice(operatorIndex, 2, result);
+        operatorList.splice(operatorIndex, 1);
+        console.log(numberList);
+        console.log(operatorList);
+      }
+    })
+  }
 
+  console.log(numberList);
+  input.value = numberList[0];
 })
 
 function updateFormulaBar() {
@@ -80,4 +102,17 @@ function updateFormulaBar() {
     formula = formula.concat(operatorList[i]);
   }
   formulaBar.textContent = formula;
+}
+
+function calculate(num1, num2, operator) {
+  int1 = parseFloat(num1);
+  int2 = parseFloat(num2);
+  if (operator==="/") 
+    return divide([int1, int2]);
+  else if (operator==="*")
+    return multiply([int1, int2]);
+  else if (operator==="+")
+    return add(int1, int2);
+  else if (operator==="-")
+    return subract(int1, int2);
 }
